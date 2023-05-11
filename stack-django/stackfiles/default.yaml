@@ -1,7 +1,7 @@
 type: app
 description: Default stackfile usecase description
 # template used to create the project
-template: stack-django/<template-name>
+template: stack-django/template_django
 inputs:
   some_input: value
 # list of plugins to be applied after project creation

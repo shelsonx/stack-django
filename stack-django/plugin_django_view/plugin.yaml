@@ -29,5 +29,6 @@ hooks:
           string: "from django.shortcuts import render"
           insert-after:
             snippet: snippets/views.py
-
-    
+          when:
+            not-exists-snippet: snippets/views.py
+  

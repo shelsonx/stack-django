@@ -15,12 +15,30 @@ inputs:
     type: text
     name: name_app
     default: hello
+  - label: Instalar o python3 ?
+    type: text
+    name: python
+    items:
+      - Sim
+      - Nao
 
 hooks:
   - type: run
     trigger: before-render
+    condition:
+      variable: python
+      operator: "=="
+      value: Sim
+    linux:
+      - "echo Installing python3 in Linux"
+    mac:
+      - "echo installing python3 in Mac"
+  
+  - type: run
+    trigger: after-render
     commands:
-     - "django-admin startproject {{inputs.name_project}}"
+      -  "django-admin startproject {{inputs.name_project}}"
+   
   - type: run
     trigger: after-render
     working-dir: "{{inputs.name_project}}"

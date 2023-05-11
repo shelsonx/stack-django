@@ -1,0 +1,50 @@
+name: plugin_django_url
+description: plugin para configuração de url da aplicação
+display-name: plugin_django_url
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/plugin/#category
+compatibility:
+  - java
+  - spring
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/yaml/#technologies
+  - "Api"
+types:
+  - app
+inputs:
+  - label: URL Path
+    type: text
+    name: url_path
+    default: stk_project/hello/urls.py
+
+hooks:
+  - type: edit
+    trigger: after-render
+    path: "{{inputs.url_path}}"
+    changes:
+      - insert:
+          line: 0
+          snippet: snippets/urls.py
+          when:
+            not-exists-snippet: snippets/urls.py
+  - type: edit
+    trigger: after-render
+    path: "stk_project/stk_project/urls.py"
+    changes:
+      - search:
+          string: 'from django.urls import path'
+          replace-by:
+            value: 'from django.urls import path, include'
+  - type: edit
+    trigger: after-render
+    path: "stk_project/stk_project/urls.py"
+    changes:
+      - search:
+          string: "path('admin/', admin.site.urls),"
+          insert-after:
+            value: "\tpath('', include('hello.urls')),\n"
+            when:
+              not-exists: "\tpath('', include('hello.urls')),\n"
