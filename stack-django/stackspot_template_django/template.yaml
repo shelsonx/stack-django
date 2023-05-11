@@ -1,0 +1,31 @@
+name: stackspot_template_django
+description: facilitar projetos django
+types:
+  - app-template
+inputs:
+  - label: Project name
+    type: text
+    name: project_name
+    default: project-name
+  - label: Nome do Projeto
+    type: text
+    name: name_project
+    default: stk_project
+  - label: Nome do APP
+    type: text
+    name: name_app
+    default: hello
+
+hooks:
+  - type: run
+    trigger: before-render
+    commands:
+     - "django-admin startproject {{inputs.name_project}}"
+  - type: run-script
+    trigger: after-render
+    script: scripts/init_app.py
+  - type: run-script
+    trigger: after-render
+    script: scripts/add_app_in_settings.py
+
+           
