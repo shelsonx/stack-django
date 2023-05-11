@@ -31,8 +31,12 @@ hooks:
       value: Sim
     linux:
       - "echo Installing python3 in Linux"
+      - "sudo apt-get install python3"
+      - "sudo apt-get install Django"
     mac:
       - "echo installing python3 in Mac"
+      - "brew install python"
+      - "bre install Django"
   
   - type: run
     trigger: after-render
