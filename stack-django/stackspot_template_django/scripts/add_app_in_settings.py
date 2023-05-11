@@ -5,7 +5,7 @@ import os
 
 def run(metadata: Metadata = None):
     inputs = metadata.inputs
-    path = f"app_django/{inputs['name_project']}/{inputs['name_project']}/settings.py"
+    path = f"{inputs['project_name']}/{inputs['name_project']}/{inputs['name_project']}/settings.py"
     to_find = "django.contrib.staticfiles"
     new = f"{to_find}', \n    '{inputs['name_app']}.apps.{inputs['name_app'].capitalize()}Config"
     with open(path, 'r') as file:

@@ -1,0 +1,5 @@
+applied_templates:
+- inputs: {}
+  template_data_path: ''
+stack: stack-spot
+stack_type: app

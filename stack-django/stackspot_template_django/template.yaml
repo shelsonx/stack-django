@@ -21,9 +21,12 @@ hooks:
     trigger: before-render
     commands:
      - "django-admin startproject {{inputs.name_project}}"
-  - type: run-script
+  - type: run
     trigger: after-render
-    script: scripts/init_app.py
+    working-dir: "{{inputs.name_project}}"
+    commands:
+      - "python3 manage.py startapp {{inputs.name_app}}"
+      - "touch {{inputs.name_app}}/urls.py"
   - type: run-script
     trigger: after-render
     script: scripts/add_app_in_settings.py

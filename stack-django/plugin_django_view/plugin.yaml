@@ -1,0 +1,33 @@
+name: plugin_django_view
+description: Describe your plugin explaining its purpose
+display-name: plugin_django_view
+picture: plugin.png
+category: backend # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/plugin/#category
+compatibility:
+  - java
+  - spring
+about: docs/about.md
+usage: docs/usage.md
+use-case: docs/use-case.md
+implementation: docs/implementation.md
+technologies: # Ref: https://docs.stackspot.com/docs/create-stacks/yaml-files/yaml/#technologies
+  - "Api"
+types:
+  - app
+inputs:
+  - label: Path da view
+    type: text
+    name: path_view
+    default: stk_project/hello/views.py
+
+hooks:
+  - type: edit
+    path: "{{inputs.path_view}}"
+    trigger: after-render
+    changes:
+      - search:
+          string: "from django.shortcuts import render"
+          insert-after:
+            snippet: snippets/views.py
+
+    
