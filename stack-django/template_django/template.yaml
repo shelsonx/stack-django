@@ -36,7 +36,7 @@ hooks:
     mac:
       - "echo installing python3 in Mac"
       - "brew install python"
-      - "bre install Django"
+      - "pip install Django"
   
   - type: run
     trigger: after-render
