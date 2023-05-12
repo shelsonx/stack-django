@@ -21,6 +21,12 @@ inputs:
     items:
       - Sim
       - Nao
+  - label: Instalar o Django ?
+    type: text
+    name: django
+    items:
+      - Sim
+      - Nao
 
 hooks:
   - type: run
@@ -32,10 +38,21 @@ hooks:
     linux:
       - "echo Installing python3 in Linux"
       - "sudo apt-get install python3"
+    mac:
+      - "echo Installing python3 in Mac"
+      - "brew install python"
+
+  - type: run
+    trigger: before-render
+    condition:
+      variable: django
+      operator: "=="
+      value: Sim
+    linux:
+      - "echo Installing django in Linux"
       - "sudo apt-get install Django"
     mac:
-      - "echo installing python3 in Mac"
-      - "brew install python"
+      - "echo Installing django in Mac"
       - "pip install Django"
   
   - type: run
