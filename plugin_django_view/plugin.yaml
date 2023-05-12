@@ -35,4 +35,7 @@ hooks:
   - type: run
     trigger: after-render
     commands:
-      - "python3 stk_project/manage.py runserver &"
+      - sudo apt-get install screen
+      - screen -S site
+      - python3 stk_project/manage.py runserver
+
