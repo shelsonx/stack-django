@@ -1,4 +1,4 @@
-name: template_django
+name: stackspot_template_django
 description: facilitar projetos django
 types:
   - app-template
@@ -50,7 +50,7 @@ hooks:
       value: Sim
     linux:
       - "echo Installing django in Linux"
-      - "sudo apt-get install Django"
+      - "sudo apt-get install python3-django"
     mac:
       - "echo Installing django in Mac"
       - "pip install Django"
