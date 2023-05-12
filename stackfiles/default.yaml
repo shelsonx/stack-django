@@ -7,4 +7,5 @@ inputs:
 # list of plugins to be applied after project creation
 plugins:
   - plugin: stack-django/plugin_django_url
+  - plugin: stack-django/plugin_django_view
 
