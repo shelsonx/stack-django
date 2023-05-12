@@ -16,7 +16,7 @@ inputs:
     name: name_app
     default: hello
 
-
+hooks:
   - type: run
     trigger: after-render
     commands:
@@ -31,5 +31,6 @@ inputs:
   - type: run-script
     trigger: after-render
     script: scripts/add_app_in_settings.py
-
-
+  - type: run-script
+    trigger: before-render
+    script: scripts/check_apps_installed.py
