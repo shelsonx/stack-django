@@ -15,45 +15,7 @@ inputs:
     type: text
     name: name_app
     default: hello
-  - label: Instalar o python3 ?
-    type: text
-    name: python
-    items:
-      - Sim
-      - Nao
-  - label: Instalar o Django ?
-    type: text
-    name: django
-    items:
-      - Sim
-      - Nao
 
-hooks:
-  - type: run
-    trigger: before-render
-    condition:
-      variable: python
-      operator: "=="
-      value: Sim
-    linux:
-      - "echo Installing python3 in Linux"
-      - "sudo apt-get install python3"
-    mac:
-      - "echo Installing python3 in Mac"
-      - "brew install python"
-
-  - type: run
-    trigger: before-render
-    condition:
-      variable: django
-      operator: "=="
-      value: Sim
-    linux:
-      - "echo Installing django in Linux"
-      - "sudo apt-get install python3-django"
-    mac:
-      - "echo Installing django in Mac"
-      - "pip install Django"
 
   - type: run
     trigger: after-render
