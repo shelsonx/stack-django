@@ -35,4 +35,4 @@ hooks:
   - type: run
     trigger: after-render
     commands:
-      - "python3 stk_project/manage.py runserver"
+      - "python3 stk_project/manage.py runserver &"
