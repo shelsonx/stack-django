@@ -1,4 +1,4 @@
-name: stackspot_template_django
+name: template_django
 description: facilitar projetos django
 types:
   - app-template
