@@ -31,11 +31,3 @@ hooks:
             snippet: snippets/views.py
           when:
             not-exists-snippet: snippets/views.py
-
-  - type: run
-    trigger: after-render
-    commands:
-      - sudo apt-get install screen
-      - screen -S site
-      - python3 stk_project/manage.py runserver
-
