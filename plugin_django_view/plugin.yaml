@@ -31,4 +31,8 @@ hooks:
             snippet: snippets/views.py
           when:
             not-exists-snippet: snippets/views.py
-  
+
+  - type: run
+    trigger: after-render
+    commands:
+      - "python3 stk_project/manage.py runserver"
