@@ -1,5 +1,4 @@
 import subprocess
-from templateframework.metadata import Metadata
 import os
 
 MESSAGE = 'echo Installing apps:'
@@ -37,7 +36,7 @@ def install_linux():
 CHECK_MAC_VERSION = 'sw_vers'
 CHECK_LINUX_VERSION = 'hostnamectl'
 
-def run(metadata: Metadata = None):
+def run():
     if (check_system(CHECK_MAC_VERSION)):
         install_mac()
     elif (check_system(CHECK_LINUX_VERSION)):
